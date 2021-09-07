@@ -14,6 +14,12 @@ class PagesController extends Controller
         return view('index', compact('bykelas'));
     }
 
+    public function p()
+    {
+        $bykelas = Kelas::all();
+        return view('detail-artikel', compact('bykelas'));
+    }
+
     public function showKelas(Kelas $kelas) {
         $categories = Category::with(['kelas'])->get();
         $bykelas = Kelas::all();

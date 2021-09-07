@@ -27,6 +27,10 @@ Route::get('/tentang-kami', function () {
     return view('tentang-kami');
 });
 
+Route::get('/p', [PagesController::class, 'p']);
+
+
+
 Route::get('/live-streaming', function () {
     return view('live-streaming');
 });
