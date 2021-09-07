@@ -1,0 +1,31 @@
+.img-area img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.desk-area:hover {
+    cursor: pointer;
+}
+
+.desk-area h2 {
+    font-size: 3rem;
+}
+
+.desk-area p {
+    color: rgb(177, 177, 177);
+}
+
+.card-blog:hover {
+    cursor: pointer;
+}
+
+.card-blog img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card-blog p {
+    margin-bottom: 0px;
+    color: rgb(177, 177, 177);
+    text-align: justify;
+}

@@ -1,0 +1,242 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.navbar-custom {
+    background-color: #fff;
+    color: #000;
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -6px #222;
+}
+
+.nav-item a {
+    color: #000;
+    font-weight: 400;
+}
+
+.container-home iframe {
+    width: 100%;
+    height: 600px;
+}
+
+.card-iklan-kelas {
+    /* width: 80%; */
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 45px;
+}
+
+.card-iklan-kelas-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* .card-iklan-kelas-info span {
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 20px;
+} */
+.option-one {
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.option-two {
+    font-weight: 700;
+    font-size: 0.6rem;
+    line-height: 12px;
+}
+
+.card-iklan-kelas-info p {
+    font-weight: 100;
+    font-size: 2.5rem;
+}
+
+.card-iklan-kelas-info button {
+    outline: none;
+    border: none;
+    background-color: #4bd1a0;
+    width: 80%;
+    height: 50px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+/*  */
+
+.card-to-page {
+    min-height: 240px;
+    background-color: black;
+    display: flex;
+    align-items: flex-end;
+    /* background-image: url("https://images.unsplash.com/photo-1620810257583-9776d8fee77d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"); */
+    background-size: cover;
+    color: #fff;
+    justify-content: space-between;
+}
+
+.agro-img {
+    background-image: url("https://images.unsplash.com/photo-1625124376314-7a32b35db9e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80");
+}
+
+.barber-img {
+    background-image: url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+}
+
+.beverage-img {
+    background-image: url("https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=825&q=80");
+}
+
+.desain-kreatif-img {
+    background-image: url("https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+}
+
+.computer-img {
+    background-image: url("https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+}
+
+.kuliner-img {
+    background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+}
+
+.mengemudi-img {
+    background-image: url("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+}
+
+.artikel-terkait-img {
+    background-image: url("https://images.unsplash.com/photo-1495020689067-958852a7765e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+}
+
+.card-to-page h1 {
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.card-to-page p {
+    font-weight: 200;
+}
+
+/*  */
+
+.card-artikel {
+    background-color: #24458a;
+    color: white;
+    padding: 50px 50px;
+}
+
+.card-artikel h1 {
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.card-artikel p {
+    font-weight: 200;
+}
+
+/*  */
+.section-testimoni h1 {
+    font-weight: 300;
+}
+
+.card-testimoni {
+    background-color: #f9f9f9;
+    padding: 20px 20px;
+}
+
+.deskripsi-testimoni {
+    margin-left: 20px;
+    line-height: 20px;
+}
+
+.deskripsi-testimoni .nama-test {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.deskripsi-testimoni .role-test {
+    color: rgb(168, 4, 4);
+    /* text-shadow: 1px 1px 1px #000000; */
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+    .container-home iframe {
+        height: 300px;
+    }
+
+    .card-iklan-kelas {
+        line-height: 25px;
+    }
+
+    .card-iklan-kelas-info p {
+        font-size: 1.7rem;
+    }
+
+    .card-iklan-kelas-info button {
+        font-size: 1.2rem;
+    }
+
+    /*  */
+    .card-artikel {
+        padding: 10px;
+    }
+
+    .card-artikel h1 {
+        font-size: 1.3rem;
+    }
+
+    .card-artikel p {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container-home iframe {
+        height: 200px;
+    }
+
+    .card-iklan-kelas {
+        line-height: 25px;
+    }
+
+    .card-iklan-kelas-info p {
+        font-size: 1.5rem;
+    }
+
+    .card-iklan-kelas-info button {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+    /*  */
+    .card-artikel {
+        padding: 10px;
+    }
+
+    .card-artikel h1 {
+        font-size: 1.3rem;
+    }
+
+    .card-artikel p {
+        font-size: 0.8rem;
+    }
+
+    .card-testimoni {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .deskripsi-testimoni {
+        margin-top: 20px;
+    }
+
+    .deskripsi-testimoni .nama-test {
+        font-size: 1.2rem;
+    }
+}

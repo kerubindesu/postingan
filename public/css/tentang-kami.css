@@ -1,0 +1,25 @@
+.section-tugas {
+    padding: 0px 20px !important;
+}
+
+.section-tugas p {
+    text-align: justify;
+}
+
+.section-fungsi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+    .section-tugas {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .section-gambar-fungsi img {
+        display: none;
+    }
+}

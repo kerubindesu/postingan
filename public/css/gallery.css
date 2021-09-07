@@ -1,0 +1,12 @@
+.img-item img {
+    width: 100%;
+}
+
+#gallery-modal .modal-img {
+    width: 100%;
+}
+
+.gallery-item:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
