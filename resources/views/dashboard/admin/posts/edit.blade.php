@@ -29,56 +29,67 @@
                 <h1 class="h2">Edit</h1>
             </div>
             <section class="form-admin">
-                <form method="post" action="{{url('posts/'. $post->id)}}" enctype="multipart/form-data">
+                <form method="post" action="{{url('admin/posts/'.$post->id)}}" enctype="multipart/form-data">
                     @method('patch')
                     @csrf
                     <div class="col-12 mb-3">
                         <div class="row">
-                            <div class="mb-3">
-                                <label for="title" class="form-label" for="formControlDefault">Judul</label>
-                                <input type="text" id="formControlDefault" class="form-control @error('title') is-invalid @enderror" placeholder="Masukan Judul" name="title" value="{{ $post->title}}" autofocus autocomplete="off">
+                            <div class="mb-4 col-lg-6">
+                                <label for="title" class="form-label">Judul</label>
+                                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Masukan Judul" name="title" value="{{ $post->title }}" autofocus autocomplete="off">
                                 @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="slug" class="form-label" for="formControlDefault">Judul</label>
-                                <input type="text" id="formControlDefault" class="form-control @error('slug') is-invalid @enderror" placeholder="Masukan Judul" name="slug" value="{{ $post->slug}}" autofocus autocomplete="off">
+                            <div class="mb-4 col-lg-6">
+                                <label for="slug" class="form-label">Slug</label>
+                                <input type="text" id="slug" class="form-control @error('slug') is-invalid @enderror bg-white" placeholder="Slug terisi otomatis" name="slug" value="{{ $post->slug }}" readonly>
                                 @error('slug')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="body" class="form-label">Desktipsi Artikel</label>
-                                <textarea id="body" class="ckeditor form-control @error('body') is-invalid @enderror" name="body">{{ $post->body}}</textarea>
+                            <div class="mb-4 col-12">
+                                <label for="body" class="form-label" class="@error('body') is-invalid @enderror">Konten</label>
+                                <input id="body" type="hidden" name="body" value="{{ $post->body }}">
+                                <trix-editor input="body" class="bg-white"></trix-editor>
                                 @error('body')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            </div>
-                            <div class="mb-3">
+                            <div class="mb-4 col-lg-8">
                                 <label for="photo" class="form-label mt-3">Photo</label>
-                                <input type="file" id="photo" class="form-control @error('photo') is-invalid @enderror" placeholder="Pilih Gambar" name="photo" value="{{ $post->photo}}">
+                                <input type="file" id="photo" class="form-control @error('photo') is-invalid @enderror" placeholder="Pilih Gambar" name="photo" value="{{ $post->photo }}">
                                 @error('photo')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="category_id" class="form-label">Sub Kelas</label>
-                                <input type="text" id="category_id" class="form-control @error('category_id') is-invalid @enderror" placeholder="Masukan category_id" name="category_id" value="{{ $post->category_id}}" autocomplete="off">
-                                @error('category_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="mb-4 col-lg-4">
+                                        <label for="category_id" class="form-label">Sub Page</label>
+                                        <select class="form-select w-100 bg-white" name="category_id" id="category_id" style="height: 38px;">
+                                        @foreach($categories as $category)
+                                            @if($post->category_id == $category->id)
+                                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                            @else
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endif
+                                        @endforeach
+                                        </select>
+                                        @error('category_id')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4 col-lg-4">
+                                        <label for="user_id" class="form-label">Author</label>
+                                        <select class="form-select w-100 bg-white" name="user_id" id="user_id" style="height: 38px;">
+                                            <option selected value="{{ $post->user_id }}">{{$post->author->name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="user_id" class="form-label">Author</label>
-                                <input type="text" id="user_id" class="form-control @error('user_id') is-invalid @enderror" placeholder="Masukan user_id" name="user_id" value="{{ $post->user_id}}" autocomplete="off">
-                                @error('user_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="w-12">
-                                <button type="submit" class="btn btn-primary" name="">Submit</button>
+                            <div class="mb-4 col-12">
+                                <button type="submit" class="btn btn-primary" name="submit">Ubah</button>
                             </div>
                         </div>
                     </div>
@@ -87,4 +98,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    const title = document.querySelector('#title');
+    const slug = document.querySelector('#slug');
+
+    title.addEventListener('change', function() {
+        fetch('/admin/posts/checkSlug?title=' + title.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+    });
+
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+    })
+</script>
 @endsection

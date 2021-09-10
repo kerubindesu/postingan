@@ -6,9 +6,11 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Admin;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Category;
+use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,11 +23,17 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Guru::insert([
-            'name' => 'Baron Tol',
-            'username' => 'barontol',
+            'name' => 'Sandhika Galih',
+            'username' => 'guru',
             'email' => 'guru@gmail.com',
             'password' => Hash::make('12345678'),
             'kelas_id' => '1',
+        ]);
+
+        Admin::insert([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('12345678'),
         ]);
 
         Kelas::insert([

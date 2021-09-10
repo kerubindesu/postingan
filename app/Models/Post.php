@@ -17,7 +17,7 @@ class Post extends Model
         return $this->belongsTo(Guru::class, 'user_id');
     }
 
-    public function categories() {
+    public function category() {
         return $this->belongsTo(Category::class);
     }
 

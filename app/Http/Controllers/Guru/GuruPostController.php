@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
-
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-
 use Illuminate\Http\Request;
-
 use App\Models\Post;
 use App\Models\Category;
 
@@ -20,8 +17,9 @@ class GuruPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
-        return view('dashboard.guru.posts.index', compact('posts'));
+        return view('dashboard.guru.posts.index', [
+            'posts' => Post::with(['author'])->get()
+        ]);
     }
 
     /**
@@ -31,8 +29,9 @@ class GuruPostController extends Controller
      */
     public function create(Request $request)
     {
-        $categories = Category::with(['kelas'])->get();
-        return view('dashboard.guru.posts.create', compact('categories'));
+        return view('dashboard.guru.posts.create', [
+            'categories' => Category::with(['kelas'])->get()
+        ]);
     }
 
     /**
@@ -64,7 +63,7 @@ class GuruPostController extends Controller
             'user_id' => $request->user_id
         ]);
 
-        return redirect('guru/guruPosts')->with('success', 'Data has been added');
+        return redirect('guru/posts')->with('success', 'Data has been added');
     }
 
     /**
@@ -86,7 +85,11 @@ class GuruPostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.guru.posts.edit', compact('post'));
+        return view('dashboard.guru.posts.edit',
+        [
+            'post' => $post,
+            'categories' => Category::with(['kelas'])->get()
+        ]);
     }
 
     /**
@@ -103,7 +106,6 @@ class GuruPostController extends Controller
             'slug' => 'required',
             'body' => 'required',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'photo' => 'required',
             'category_id' => 'required',
             'user_id' => 'required'
         ]);
@@ -122,7 +124,7 @@ class GuruPostController extends Controller
             'user_id' => $request->user_id
         ]);
 
-        return redirect('guru/guruPosts')->with('status', 'Data Updated');
+        return redirect('guru/posts')->with('status', 'Data Updated');
     }
 
     /**
@@ -134,7 +136,7 @@ class GuruPostController extends Controller
     public function destroy(Post $post)
     {
         Post::destroy($post->id);
-        return redirect('guru/guruPosts')->with('status', 'Data Deleted!');
+        return redirect('guru/posts')->with('status', 'Data Deleted!');
     }
 
     public function checkSlug(Request $request)

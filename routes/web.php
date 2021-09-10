@@ -7,6 +7,7 @@ use App\Http\Controllers\Guru\GuruPostController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,11 @@ use App\Http\Controllers\Admin\AdminController;
 |
 */
 
+// Halaman Pengguna
 Route::get('/', [PagesController::class, 'index']);
-Route::get('/kelas/{kelas:slug}', [PagesController::class, 'showKelas']);
-Route::get('/kelas/{category:slug}', [PagesController::class, 'showCategory']);
-
+Route::get('/c/{kelas:slug}', [PagesController::class, 'cShow']);
+Route::get('/c/{kelas:slug}/{category:slug}', [PagesController::class, 'scShow']);
+Route::get('/c/{kelas:slug}/{category:slug}/{post:slug}', [PagesController::class, 'pShow']);
 Route::get('/tentang-kami', function () {
     return view('tentang-kami');
 });
@@ -56,7 +58,7 @@ Route::get('/admin', function () {
 // Route::get('mengemudi', 'App\Http\Controllers\PagesController@mengemudi');
 // Route::get('login', 'App\Http\Controllers\PagesController@login');
 
-Route::resource('posts', 'App\Http\Controllers\PostController');
+// Route::resource('posts', 'App\Http\Controllers\PostController');
 
 Auth::routes();
 
@@ -82,8 +84,17 @@ Route::prefix('admin')->name('admin.')->group(function(){
           Route::post('/check',[AdminController::class,'check'])->name('check');
     });
 
+    Route::get('/posts/checkSlug', [PostController::class, 'checkSlug']);
+
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
-        Route::view('/home','dashboard.admin.home')->name('home');
+        Route::view('/home','dashboard.admin.home', ['title' => 'Home'])->name('home');
+        Route::get('posts', [PostController::class, 'index']);
+        Route::get('posts/create', [PostController::class, 'create']);
+        Route::post('posts', [PostController::class, 'store']);
+        Route::get('posts/{post:slug}', [PostController::class, 'show']);
+        Route::get('posts/{post:slug}/edit', [PostController::class, 'edit']);
+        Route::patch('posts/{post}', [PostController::class, 'update']);
+        Route::delete('posts/{post}', [PostController::class, 'destroy']);
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
       
     });
@@ -98,17 +109,17 @@ Route::prefix('guru')->name('guru.')->group(function(){
          Route::post('/check',[GuruController::class,'check'])->name('check');
     });
 
-    Route::get('/guruPosts/checkSlug', [GuruPostController::class, 'checkSlug']);
+    Route::get('/posts/checkSlug', [GuruPostController::class, 'checkSlug']);
 
     Route::middleware(['auth:guru','PreventBackHistory'])->group(function(){
          Route::view('home','dashboard.guru.home')->name('home');
-         Route::get('guruPosts', [GuruPostController::class, 'index']);
-         Route::get('guruPosts/create', [GuruPostController::class, 'create']);
-         Route::post('guruPosts', [GuruPostController::class, 'store']);
-         Route::get('guruPosts/{post:slug}', [GuruPostController::class, 'show']);
-         Route::get('guruPosts/{post:slug}/edit', [GuruPostController::class, 'edit']);
-         Route::patch('guruPosts/{post}', [GuruPostController::class, 'update']);
-         Route::delete('guruPosts/{post}', [GuruPostController::class, 'destroy']);
+         Route::get('posts', [GuruPostController::class, 'index']);
+         Route::get('posts/create', [GuruPostController::class, 'create']);
+         Route::post('posts', [GuruPostController::class, 'store']);
+         Route::get('posts/{post:slug}', [GuruPostController::class, 'show']);
+         Route::get('posts/{post:slug}/edit', [GuruPostController::class, 'edit']);
+         Route::patch('posts/{post}', [GuruPostController::class, 'update']);
+         Route::delete('posts/{post}', [GuruPostController::class, 'destroy']);
          Route::post('logout',[GuruController::class,'logout'])->name('logout');
     });
 

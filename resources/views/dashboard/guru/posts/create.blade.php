@@ -29,7 +29,7 @@
                 <h1 class="h2">Create</h1>
             </div>
             <section class="form-admin">
-                <form method="post" action="{{url('guru/guruPosts')}}" enctype="multipart/form-data">
+                <form method="post" action="{{url('guru/posts')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12 mb-4">
                         <div class="row">
@@ -65,7 +65,7 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="mb-4 col-lg-4">
-                                        <label for="category_id" class="form-label">Sub Kelas</label>
+                                        <label for="category_id" class="form-label">Sub Page</label>
                                         <select class="form-select w-100 bg-white" name="category_id" id="category_id" style="height: 38px;">
                                         @foreach($categories as $category)
                                             @if ($category->kelas_id === Auth::guard('guru')->user()->kelas_id)
@@ -105,7 +105,7 @@
     const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function() {
-        fetch('/guru/guruPosts/checkSlug?title=' + title.value)
+        fetch('/guru/posts/checkSlug?title=' + title.value)
             .then(response => response.json())
             .then(data => slug.value = data.slug)
     });

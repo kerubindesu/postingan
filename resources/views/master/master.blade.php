@@ -39,7 +39,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{asset('js/gallery.js')}}"></script>
+    <!-- <script type="text/javascript" src="{{asset('js/gallery.js')}}"></script> -->
 
     <!-- Trix Editor -->
     <script type="text/javascript" src="{{asset('js/trix.js')}}"></script>

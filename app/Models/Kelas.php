@@ -12,4 +12,8 @@ class Kelas extends Model
     public function guru() {
         return $this->hasMany(Guru::class);
     }
+
+    public function categories() {
+        return $this->hasMany(Category::class);
+    }
 }

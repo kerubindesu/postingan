@@ -145,7 +145,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('guru/guruPosts')}}" class="nav-link">
+                <a href="{{url('guru/posts')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Post</p>
                 </a>

@@ -25,29 +25,33 @@
     <section class="content">
         <div class="container-fluid">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Post Berita</h1>
+                <h1 class="h2">Post Materi</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <a href="{{url('posts/create')}}" class="btn btn-primary me-2 mb-3 mr-3">
+                    <a href="{{url('admin/posts/create')}}" class="btn btn-primary me-2 mb-3 mr-3">
                         <span><i class="far fa-plus-square"></i></span>
-                        Posting Berita Baru
+                        Posting Materi Baru
                     </a>
                     <div class="btn-group">
                         <div class="pt-2">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
-                                    
                                 </ul>
                             </nav>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Alert -->
+            @if(session()->has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{session('success')}}
+                </div>
+            @endif
 
             <div class="table-responsive">
-                <table class="table table-striped table-sm">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr class="text-center">
-                            <th scope="col">Nomor</th>
                             <th scope="col">Gambar</th>
                             <th scope="col">Judul</th>
                             <th scope="col">Artikel</th>
@@ -56,15 +60,14 @@
                     </thead>
                     <tbody>
                         @foreach( $posts as $post )
-                        <tr class="text-center">
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td><img src="{{ asset('images/'.$post->photo) }}" class="img-fluid rounded" width="180px" alt="{{$post->photo}}"></td>
-                            <td><p>{{ $post->title }}</p></td>
-                            <td>{!! substr($post->body,0,96) !!}..</td>
-                            <td><a href="{{ url('posts/'.$post->id)}}" class="btn btn-primary"><i class="far fa-eye"></i></a></td>
-                            <td><a href="{{ url('posts/'.$post->id.'/edit')}}" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
+                        <tr>
+                            <td><img src="{{ asset('images/'.$post->photo) }}" class="img-fluid rounded" width="80" alt="{{$post->slug}}"></td>
+                            <td><h6>{{ $post->title }}</h6></td>
+                            <td>{!! Str::words($post->body, 16, ' ...') !!}</td>
+                            <td><a href="{{ url('admin/posts/'.$post->slug)}}" class="btn btn-primary"><i class="far fa-eye"></i></a></td>
+                            <td><a href="{{ url('admin/posts/'.$post->slug.'/edit')}}" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
                             <td>
-                                <form action="{{ url('posts/'.$post->id)}}" method="post" class="d-inline">
+                                <form action="{{ url('admin/posts/'.$post->id)}}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-dark" name="delete" onclick="return confirm('Apakah anda yakin ingin menghapus Data ini?'); "><i class="far fa-trash-alt"></i></button>
